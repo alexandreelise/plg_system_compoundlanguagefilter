@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9" type="plugin" group="system" method="upgrade">
+    <name>plg_system_compoundlanguagefilter</name>
+    <author>Alexandre ELISÉ</author>
+    <creationDate>2021-02-28</creationDate>
+    <copyright>Copyright (C) 2009 - 2021 Alexandre ELISÉ. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>contact@alexandre-elise.fr</authorEmail>
+    <authorUrl>https://coderparlerpartager.fr</authorUrl>
+    <version>1.0.0</version>
+    <description>PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_XML_DESCRIPTION</description>
+    <files>
+        <filename plugin="compoundlanguagefilter">compoundlanguagefilter.php</filename>
+        <folder>helpers</folder>
+        <folder>models</folder>
+        <folder>language</folder>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="detect_browser"
+                        type="list"
+                        label="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_FIELD_DETECT_BROWSER_LABEL"
+                        description="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_FIELD_DETECT_BROWSER_DESC"
+                        default="0"
+                        filter="integer"
+                >
+                    <option value="0">PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_SITE_LANGUAGE</option>
+                    <option value="1">PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_BROWSER_SETTINGS</option>
+                </field>
+
+                <field
+                        name="automatic_change"
+                        type="radio"
+                        label="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_FIELD_AUTOMATIC_CHANGE_LABEL"
+                        description="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_FIELD_AUTOMATIC_CHANGE_DESC"
+                        default="1"
+                        filter="integer"
+                        class="btn-group btn-group-yesno"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                        name="item_associations"
+                        type="radio"
+                        label="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_FIELD_ITEM_ASSOCIATIONS_LABEL"
+                        description="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_FIELD_ITEM_ASSOCIATIONS_DESC"
+                        default="1"
+                        filter="integer"
+                        class="btn-group btn-group-yesno"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                        name="alternate_meta"
+                        type="radio"
+                        label="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_FIELD_ALTERNATE_META_LABEL"
+                        description="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_FIELD_ALTERNATE_META_DESC"
+                        default="1"
+                        filter="integer"
+                        class="btn-group btn-group-yesno"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                        name="xdefault"
+                        type="radio"
+                        label="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_FIELD_XDEFAULT_LABEL"
+                        description="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_FIELD_XDEFAULT_DESC"
+                        default="1"
+                        filter="integer"
+                        class="btn-group btn-group-yesno"
+                        showon="alternate_meta:1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                        name="xdefault_language"
+                        type="contentlanguage"
+                        label="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_FIELD_XDEFAULT_LANGUAGE_LABEL"
+                        description="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_FIELD_XDEFAULT_LANGUAGE_DESC"
+                        default="default"
+                        showon="alternate_meta:1[AND]xdefault:1"
+                >
+                    <option value="default">PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_OPTION_DEFAULT_LANGUAGE</option>
+                </field>
+
+                <field
+                        name="remove_default_prefix"
+                        type="radio"
+                        label="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_FIELD_REMOVE_DEFAULT_PREFIX_LABEL"
+                        description="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_FIELD_REMOVE_DEFAULT_PREFIX_DESC"
+                        default="0"
+                        filter="integer"
+                        class="btn-group btn-group-yesno"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                        name="lang_cookie"
+                        type="list"
+                        label="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_FIELD_COOKIE_LABEL"
+                        description="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_FIELD_COOKIE_DESC"
+                        default="0"
+                        filter="integer"
+                >
+                    <option value="1">PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_OPTION_YEAR</option>
+                    <option value="0">PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_OPTION_SESSION</option>
+                </field>
+            </fieldset>
+            <fieldset name="mapping">
+                <field name="compound_languages"
+                       type="subform"
+                       formsource="/plugins/system/compoundlanguagefilter/models/forms/compoundlanguage.xml"
+                       multiple="true"
+                       min="0"
+                       max="1000" label="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_COMPOUND_LANGUAGES_LABEL"
+                       description="PLG_SYSTEM_COMPOUNDLANGUAGEFILTER_COMPOUND_LANGUAGES_DESCRIPTION"/>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
